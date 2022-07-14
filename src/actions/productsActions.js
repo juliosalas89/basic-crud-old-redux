@@ -99,7 +99,6 @@ export const deleteProductAction = product => {
                         'success'
                     )
                 } catch (error) {
-                    dispatch(deleteProductError())
                     Swal.fire(
                         'Ooops!',
                         'Something went wrong...',

@@ -4,9 +4,11 @@ import { createProductAction } from '../actions/productsActions.js';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { editProductAction } from '../actions/productsActions.js';
+import { showAlertAction } from '../actions/alertActions.js';
 
 const NewProduct = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [newProduct, setNewProduct] = useState({
         name: '',
         price: ''
@@ -14,20 +16,21 @@ const NewProduct = () => {
     const loading = useSelector(state => state.products.lading);
     const { name, price } = newProduct;
     const productToEdit = useSelector(state => state.products.productToEdit);
+    const alert = useSelector(state => state.alert.alert);
     
     useEffect(()=> {
         if(productToEdit) {
             setNewProduct({
                 name: productToEdit.name,
                 price: productToEdit.price
-            })
+            });
         } else {
             setNewProduct({
                 name: '',
                 price: ''
-            })
+            });
         }
-    },[productToEdit])
+    },[productToEdit]);
 
     
     const handleChange = e => {
@@ -37,13 +40,14 @@ const NewProduct = () => {
         })
     }
     
-    const dispatch = useDispatch();
 
     const handleSubmit = e => {
         e.preventDefault();
         if (name.trim() === '' || price.trim() === '') {
-            return
+            dispatch(showAlertAction('All fields are required.'));
+            return;
         }
+        dispatch(showAlertAction(null));
         if(productToEdit) {
             dispatch(editProductAction({
                 ...newProduct,
@@ -84,6 +88,7 @@ const NewProduct = () => {
                                     onChange={handleChange}
                                 />
                             </div>
+                            {alert ? <p className='alert alert-warning'>{alert}</p> : null}
                             <button
                                 type='submit'
                                 className='btn btn-primary d-block w-100 text-uppercase'
