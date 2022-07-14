@@ -1,0 +1,49 @@
+{
+  "products": [
+    {
+      "name": "Coffe and milk",
+      "price": "2.5",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Double coffe",
+      "price": "7"
+    },
+    {
+      "id": 4,
+      "name": "Waffle",
+      "price": "15"
+    },
+    {
+      "name": "Muffin",
+      "price": "8",
+      "id": 5
+    },
+    {
+      "name": "Julio Alberto Salas",
+      "price": "1",
+      "id": 6
+    },
+    {
+      "name": "Front",
+      "price": "678",
+      "id": 16
+    },
+    {
+      "name": "Front",
+      "price": "36",
+      "id": 17
+    },
+    {
+      "name": "Front",
+      "price": "1",
+      "id": 18
+    },
+    {
+      "name": "Julio Alberto Salas",
+      "price": "43",
+      "id": 19
+    }
+  ]
+}
